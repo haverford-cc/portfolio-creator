@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile.dev
+    depends_on: 
+      - postgres
+    ports:
+      - 8000:8000
+    volumes:
+      - ./backend/:/backend/:ro
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - backend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/:/frontend/
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: portfolio-creator
+      POSTGRES_USER: portfolio-creator
+      POSTGRES_PASSWORD: portfolio-creator
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data/:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
