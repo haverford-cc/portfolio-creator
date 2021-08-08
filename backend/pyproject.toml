@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = "The backend web server of portfolio-creator."
+authors = ["Haverford Coding Club <haverford-cc@axolotl.cloud>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.68.0"
+gunicorn = "^20.1.0"
+uvicorn = {extras = ["standard"], version = "^0.14.0"}
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.2"
+taskipy = "^1.8.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+start = "uvicorn backend:app --host 0.0.0.0"
+reload = "uvicorn backend:app --host 0.0.0.0 --reload"
+lint = "flake8 ."
