@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://portfolio-creator-api.dens.dev/:path*"
+    }
+  ]
+}
