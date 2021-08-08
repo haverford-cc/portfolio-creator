@@ -1,0 +1,15 @@
+FROM node:latest
+
+WORKDIR /frontend
+
+# Copy dependencies
+COPY package.json .
+COPY yarn.lock .
+
+# Install dependencies
+RUN yarn
+
+# Copy source code
+COPY . .
+
+CMD ["yarn", "dev"]
