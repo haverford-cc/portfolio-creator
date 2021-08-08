@@ -21,7 +21,8 @@ jobs:
         run: |
           tag=$(cut -c 1-7 <<< $GITHUB_SHA)
           echo "::set-output name=tag::$tag"
-      - name: Checkout code
+
+      - name: Checkout Kubernetes repository
         uses: actions/checkout@v2
         with:
           repository: haverford-cc/kubernetes
