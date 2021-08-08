@@ -1,12 +1,18 @@
 name: Build
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Lint
     branches:
       - main
+    types:
+      - completed
 
 jobs:
   build:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    name: Build & Push
     runs-on: ubuntu-latest
 
     steps:
@@ -15,7 +21,7 @@ jobs:
       run: |
         tag=$(cut -c 1-7 <<< $GITHUB_SHA)
         echo "::set-output name=tag::$tag"
-        
+
     - name: Checkout repository
       uses: actions/checkout@v2
 
