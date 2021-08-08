@@ -1,8 +1,7 @@
-from fastapi import APIRouter
-
 from backend.routes import index
 
-api_router = APIRouter(
-    prefix="/api"
-)
-api_router.include_router(index.router)
+__all__ = ["routers"]
+
+routers = [
+    index.router,
+]
