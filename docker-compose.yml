@@ -7,7 +7,7 @@ services:
     depends_on: 
       - postgres
     environment:
-      DEBUG: 1
+      DEBUG: "true"
       DATABASE_URL: postgresql://portfolio-creator:portfolio-creator@postgres:5432/portfolio-creator
     ports:
       - 8000:8000
