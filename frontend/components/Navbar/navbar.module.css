@@ -11,14 +11,14 @@
   font-size: 1.5em;
   font-weight: bold;
   color: white;
-  margin-left: 2rem;
 }
 
 .navlist {
   list-style-type: none;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .navlist li {
@@ -42,7 +42,6 @@
   margin-top: 5px;
   color: #fff;
   font-size: 14px;
-  margin-left: 1rem;
   font-weight: 500;
   box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.13);
   background: #559cad;
