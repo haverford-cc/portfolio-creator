@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./navbar.module.css";
-import Head from "next/head";
 
 const Navbar = () => (
   <div className={styles.background}>
