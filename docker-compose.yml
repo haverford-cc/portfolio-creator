@@ -6,6 +6,9 @@ services:
       dockerfile: Dockerfile.dev
     depends_on: 
       - postgres
+    environment:
+      DEBUG: 1
+      DATABASE_URL: postgres://portfolio-creator:portfolio-creator@postgres:5432/portfolio-creator
     ports:
       - 8000:8000
     volumes:
