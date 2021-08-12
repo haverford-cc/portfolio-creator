@@ -10,8 +10,6 @@ DATABASE_URL = \
         .set(drivername=f"{_RAW_DATABASE_URL.drivername}+asyncpg") \
         .render_as_string(hide_password=False)
 
-ALEMBIC_DATABASE_URL = _RAW_DATABASE_URL.render_as_string(hide_password=False)
-
 if DEBUG:
     ALLOW_ORIGINS = [
         "http://127.0.0.1:3000",
