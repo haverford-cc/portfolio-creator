@@ -1,11 +1,11 @@
 .background {
-  padding: 0 1rem;
+  padding: 0 2rem 0 2rem;
   margin: 0;
   display: flex;
   background-color: #16202f;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 82px;
 }
 
 .title {
