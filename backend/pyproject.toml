@@ -7,8 +7,12 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
+alembic = "^1.6.5"
+asyncpg = "^0.24.0"
 fastapi = "^0.68.0"
 gunicorn = "^20.1.0"
+python-decouple = "^3.4"
+SQLAlchemy = {extras = ["asyncio"], version = "^1.4.22"}
 uvicorn = {extras = ["standard"], version = "^0.14.0"}
 
 [tool.poetry.dev-dependencies]
@@ -23,3 +27,5 @@ build-backend = "poetry.core.masonry.api"
 start = "uvicorn backend:app --host 0.0.0.0"
 reload = "uvicorn backend:app --host 0.0.0.0 --reload"
 lint = "flake8 ."
+migrate = "alembic upgrade head"
+createmigration = "alembic revision --autogenerate --message"
