@@ -1,8 +1,9 @@
 from decouple import config
+from sqlalchemy.engine import URL
 
 DEBUG = config("DEBUG", cast=bool, default=False)
 
-DATABASE_URL = config("DATABASE_URL")
+DATABASE_URL = URL.create(config("DATABASE_URL")).set(drivername="postgresql+asyncpg")
 
 if DEBUG:
     ALLOW_ORIGINS = [
