@@ -5,8 +5,7 @@ import Navbar from "../components/Navbar/Narbar";
 const Home = () => (
   <div className={styles.container}>
     <Navbar />
-    <Head>
-    </Head>
+    <Head></Head>
   </div>
 );
 

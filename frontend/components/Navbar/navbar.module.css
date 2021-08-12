@@ -1,73 +1,74 @@
 .background {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    height: 10%;
-    width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  height: 10%;
+  width: 100%;
+  background-color: #16202f;
 }
 
 .logo {
-    flex: 0 20%;
-    display: flex;
-    align-items: center;
+  flex: 0 20%;
+  display: flex;
+  align-items: center;
 }
 
 .title {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #30323D;
-    margin-left: 2rem;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  margin-left: 2rem;
 }
 
 .middle {
-    flex: 0 60%;
-    align-items: center;
+  flex: 0 60%;
+  align-items: center;
 }
 
 .navlist {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navlist li {
-    margin: 1rem;
-    font-weight: 600;
+  margin: 1rem;
+  font-weight: 600;
+  color: white;
 }
 
 .signin {
-    font-weight: normal !important;
-    color: #559CAD;
+  font-weight: normal !important;
+  color: white !important;
 }
 
 .signup {
-    -webkit-appearance:  none; 
-    width: auto;
-    min-width: 100px;
-    border-radius: 24px; 
-    text-align: center; 
-    padding: 15px 40px;
-    margin-top: 5px; 
-    color: #fff; 
-    font-size: 14px;
-    margin-left: 1rem;
-    font-weight: 500; 
-    box-shadow: 0px 2px 6px -1px rgba(0,0,0,.13); 
-    background: #559CAD;
-    border: none;
-    transition: all .3s ease; 
-    outline: 0; 
+  -webkit-appearance: none;
+  width: auto;
+  min-width: 100px;
+  border-radius: 24px;
+  text-align: center;
+  padding: 15px 40px;
+  margin-top: 5px;
+  color: #fff;
+  font-size: 14px;
+  margin-left: 1rem;
+  font-weight: 500;
+  box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.13);
+  background: #559cad;
+  border: none;
+  transition: all 0.3s ease;
+  outline: 0;
 }
 
 .signup:hover {
-    transform:  translateY(-3px);
-    box-shadow:  0 2px 6px -1px rgba(rgb(182,157,230), .65);
+  transform: translateY(-3px);
+  box-shadow: 0 2px 6px -1px rgba(rgb(182, 157, 230), 0.65);
 }
 
 .right {
-    flex: 0 20%;
-    display: flex;
-    align-items: center;
-
+  flex: 0 20%;
+  display: flex;
+  align-items: center;
 }
