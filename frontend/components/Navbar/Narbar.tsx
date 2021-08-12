@@ -19,7 +19,7 @@ const Navbar = () => (
         </li>
       </ul>
     </div>
-    <div className={styles.right}>
+    <div>
       <a href="" className={styles.signin}>
         Sign in
       </a>
