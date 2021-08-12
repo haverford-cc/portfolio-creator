@@ -9,8 +9,8 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 
 sys.path.append(".")
 
-from backend.constants import DATABASE_URL
-from backend.models import Base
+from backend.constants import DATABASE_URL  # NOQA: E402
+from backend.models import Base             # NOQA: E402
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -35,7 +35,8 @@ config.set_main_option("sqlalchemy.url", DATABASE_URL)
 
 
 def run_migrations_offline():
-    """Run migrations in 'offline' mode.
+    """
+    Run migrations in "offline" mode.
 
     This configures the context with just a URL
     and not an Engine, though an Engine is acceptable
@@ -44,7 +45,6 @@ def run_migrations_offline():
 
     Calls to context.execute() here emit the given string to the
     script output.
-
     """
     url = config.get_main_option("sqlalchemy.url")
     context.configure(
@@ -66,11 +66,11 @@ def do_run_migrations(connection):
 
 
 async def run_migrations_online():
-    """Run migrations in 'online' mode.
+    """
+    Run migrations in "online" mode.
 
     In this scenario we need to create an Engine
     and associate a connection with the context.
-
     """
     connectable = AsyncEngine(
         engine_from_config(

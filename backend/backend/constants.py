@@ -5,10 +5,9 @@ DEBUG = config("DEBUG", cast=bool, default=False)
 
 _RAW_DATABASE_URL = make_url(config("DATABASE_URL"))
 
-DATABASE_URL = \
-    _RAW_DATABASE_URL \
-        .set(drivername=f"{_RAW_DATABASE_URL.drivername}+asyncpg") \
-        .render_as_string(hide_password=False)
+DATABASE_URL = _RAW_DATABASE_URL \
+    .set(drivername=f"{_RAW_DATABASE_URL.drivername}+asyncpg") \
+    .render_as_string(hide_password=False)
 
 if DEBUG:
     ALLOW_ORIGINS = [
