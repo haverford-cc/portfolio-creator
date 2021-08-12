@@ -19,4 +19,4 @@ RUN poetry install
 COPY . .
 
 # Start app
-CMD ["poetry", "run", "task", "reload"]
+CMD ["sh", "-c", "alembic upgrade head && poetry run task reload"]

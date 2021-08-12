@@ -22,4 +22,4 @@ COPY ./gunicorn_conf.py /gunicorn_conf.py
 COPY . .
 
 # Start Gunicorn with Uvicorn workers.
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "-c", "/gunicorn_conf.py", "backend:app"]
+CMD ["sh", "-c", "alembic upgrade head && gunicorn -k uvicorn.workers.UvicornWorker -c /gunicorn_conf.py backend:app"]

@@ -1,9 +1,16 @@
 from decouple import config
-from sqlalchemy.engine import URL
+from sqlalchemy.engine import make_url
 
 DEBUG = config("DEBUG", cast=bool, default=False)
 
-DATABASE_URL = URL.create(config("DATABASE_URL")).set(drivername="postgresql+asyncpg")
+_RAW_DATABASE_URL = make_url(config("DATABASE_URL"))
+
+DATABASE_URL = \
+    _RAW_DATABASE_URL \
+        .set(drivername=f"{_RAW_DATABASE_URL.drivername}+asyncpg") \
+        .render_as_string(hide_password=False)
+
+ALEMBIC_DATABASE_URL = _RAW_DATABASE_URL.render_as_string(hide_password=False)
 
 if DEBUG:
     ALLOW_ORIGINS = [
