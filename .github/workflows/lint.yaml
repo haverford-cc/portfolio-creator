@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - main
-  pull_request:
+  pull_request_target:
     branches:
       - main
+
+permissions:
+  checks: write
+  contents: read
 
 jobs:
   setup-prettier:
@@ -17,8 +21,15 @@ jobs:
         working-directory: ./frontend
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository (push)
+        if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v2
+
+      - name: Checkout repository (pull_request_target)
+        if: ${{ github.event_name == 'pull_request_target' }}
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -44,8 +55,15 @@ jobs:
         working-directory: ./backend
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository (push)
+        if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v2
+
+      - name: Checkout repository (pull_request_target)
+        if: ${{ github.event_name == 'pull_request_target' }}
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set up Python
         uses: actions/setup-python@v2
