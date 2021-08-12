@@ -27,11 +27,11 @@ for router in routers:
 @app.on_event("startup")
 async def startup() -> None:
     """Create database connection on startup."""
-    app.state.db_engine = create_async_engine(DATABASE_URL)
+    app.state.db_engine = create_async_engine(DATABASE_URL, future=True)
     app.state.db_session = sessionmaker(
         app.state.db_engine,
-        expire_on_commit=False,
         class_=AsyncSession,
+        future=True,
     )
 
 
