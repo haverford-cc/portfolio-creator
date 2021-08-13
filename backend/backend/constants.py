@@ -11,6 +11,11 @@ DATABASE_URL = _RAW_DATABASE_URL \
 
 JWT_SECRET = config("JWT_SECRET")
 
+FRONTEND_DOMAIN = config(
+    "FRONTEND_DOMAIN",
+    default="portfolio-creator.dens.dev" if not DEBUG else "portfolio-creator.local"
+)
+
 if DEBUG:
     ALLOW_ORIGINS = [
         "http://127.0.0.1:3000",
