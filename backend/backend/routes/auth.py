@@ -1,6 +1,4 @@
-from typing import Optional
-
-from fastapi import APIRouter, Cookie, Request, Response
+from fastapi import APIRouter, Request, Response
 
 from backend.constants import DEBUG, FRONTEND_DOMAIN
 from backend.schemas.auth import NewUser, User
@@ -31,9 +29,3 @@ async def signup(request: Request, user: NewUser) -> Response:
     """Create a new account for the given user."""
     await auth.signup(request.app.state.db_session, user)
     return {"success": True}
-
-
-@router.get("/token")
-async def show_token(token: Optional[str] = Cookie(None)) -> Response:
-    """Show the token to the user."""
-    return {"token": token}
