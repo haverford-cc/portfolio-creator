@@ -76,7 +76,7 @@ async def login(db_session: AsyncSession, user: UserSchema) -> str:
         if db_user is None:
             raise HTTPException(
                 status_code=HTTP_401_UNAUTHORIZED,
-                detail="Invalid email or password"
+                detail="Invalid email or password."
             )
 
         loop = asyncio.get_running_loop()
@@ -97,5 +97,5 @@ async def login(db_session: AsyncSession, user: UserSchema) -> str:
 
     raise HTTPException(
         status_code=HTTP_401_UNAUTHORIZED,
-        detail="Invalid email or password"
+        detail="Invalid email or password."
     )
