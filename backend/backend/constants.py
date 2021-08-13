@@ -15,6 +15,7 @@ if DEBUG:
     ALLOW_ORIGINS = [
         "http://127.0.0.1:3000",
         "http://localhost:3000",
+        "http://portfolio-creator.local:3000",
     ]
     ALLOW_ORIGIN_REGEX = None
 
