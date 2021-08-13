@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, String
+from sqlalchemy import Column, Integer, String
 
 from backend.models import Base
 
@@ -8,6 +8,6 @@ class User(Base):
 
     __tablename__ = "users"
 
-    id = Integer(primary_key=True)
-    email = String(length=255, unique=True, nullable=False)
-    password_hash = String(nullable=False)
+    id = Column(Integer, primary_key=True)
+    email = Column(String(length=255), unique=True, nullable=False)
+    password_hash = Column(String, nullable=False)
