@@ -1,7 +1,8 @@
-from backend.routes import index
+from backend.routes import auth, index
 
 __all__ = ["routers"]
 
 routers = [
+    auth.router,
     index.router,
 ]

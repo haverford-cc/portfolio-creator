@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
-  async rewrites() {
+  rewrites: async () => {
     return [
       {
         source: "/api/:path*",
