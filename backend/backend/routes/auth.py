@@ -14,7 +14,7 @@ async def login(request: Request, response: Response, user: User) -> Response:
     """Login the given user."""
     token = await auth.login(request.app.state.db_session, user)
 
-    domain = request.headers.get("x-forwarded-for", FRONTEND_DOMAIN)
+    domain = request.headers.get("x-forwarded-host", FRONTEND_DOMAIN)
     if not verify_host(domain):
         raise HTTPException(status_code=HTTP_418_IM_A_TEAPOT, detail="Nice try.")
 
