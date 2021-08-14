@@ -16,6 +16,8 @@ FRONTEND_DOMAIN = config(
     default="portfolio-creator.dens.dev" if not DEBUG else "portfolio-creator.local"
 )
 
+PASSWORD_MIN_LENGTH = 8
+
 if DEBUG:
     ALLOW_ORIGIN_PROTOCOL = "http"
     ALLOW_ORIGIN_PARTS = [

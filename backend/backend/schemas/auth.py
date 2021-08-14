@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr, validator
 
-PASSWORD_MIN_LENGTH = 8
+from backend.constants import PASSWORD_MIN_LENGTH
 
 
 class NewUser(BaseModel):
