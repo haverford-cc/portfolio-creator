@@ -6,9 +6,11 @@
 }
 
 .login_form {
-    height: 40vh;
-    width: 30vw;
+    width: 500px;
+    height: auto;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .title {
@@ -17,7 +19,7 @@
 
 .login {
     -webkit-appearance: none;
-    width: auto;
+    width: 30%;
     min-width: 100px;
     border-radius: 24px;
     text-align: center;
@@ -36,4 +38,15 @@
   .login:hover {
     transform: translateY(-3px);
     box-shadow: 0 2px 6px -1px rgba(rgb(182, 157, 230), 0.65);
+  }
+
+  .input {
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 20px;
+    width: 90%;
   }
