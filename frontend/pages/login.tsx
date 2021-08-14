@@ -2,9 +2,17 @@ import styles from '../styles/login.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Navbar from '../components/Navbar/Narbar';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 const Login = () => {
 
+    const ApiClient = axios.create({
+        baseURL: "/api",
+        withCredentials: true,
+        headers: { "X-Forwarded-Host": window.location.hostname },
+    });
+    
     const initialValues = {
         email: '',
         password: ''
@@ -15,8 +23,16 @@ const Login = () => {
         password: Yup.string().required(' Required')
     })
 
-    const formSubmission = (values) => {
+    const formSubmission = (values:any) => {
+        ApiClient.post('/auth/login', {
+            email: values.email,
+            password: values.password
 
+        }).then(response => {
+            if(response.data.success) {
+                window.location.href = '/';
+            }
+        })
     }
 
     return(
