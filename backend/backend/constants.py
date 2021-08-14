@@ -34,6 +34,12 @@ else:
     ]
     ALLOW_ORIGIN_REGEX = r"portfolio-creator-git-.*-haverford-cc\.vercel\.app"
 
+if (_ENV_ALLOW_ORIGIN_HOST := config("ALLOW_ORIGIN_HOST", default=None)):
+    if (_ENV_ALLOW_ORIGIN_PORT := config("ALLOW_ORIGIN_PORT", cast=int, default=None)):
+        ALLOW_ORIGIN_PARTS.append((_ENV_ALLOW_ORIGIN_HOST, _ENV_ALLOW_ORIGIN_PORT))
+    else:
+        ALLOW_ORIGIN_PARTS.append((_ENV_ALLOW_ORIGIN_HOST, None))
+
 ALLOW_ORIGINS = [
     f"{ALLOW_ORIGIN_PROTOCOL}://{host}:{port}"
     if port is not None else f"{ALLOW_ORIGIN_PROTOCOL}://{host}"
