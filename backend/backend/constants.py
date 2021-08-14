@@ -35,6 +35,7 @@ else:
     ALLOW_ORIGIN_REGEX = r"portfolio-creator-git-.*-haverford-cc\.vercel\.app"
 
 ALLOW_ORIGINS = [
-    f"{ALLOW_ORIGIN_PROTOCOL}://{host}{port}" if port is not None else f"{ALLOW_ORIGIN_PROTOCOL}://{host}"
+    f"{ALLOW_ORIGIN_PROTOCOL}://{host}{port}"
+    if port is not None else f"{ALLOW_ORIGIN_PROTOCOL}://{host}"
     for host, port in ALLOW_ORIGIN_PARTS
 ]
