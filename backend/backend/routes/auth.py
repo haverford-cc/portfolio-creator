@@ -1,8 +1,10 @@
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, HTTPException, Request, Response
+from starlette.status import HTTP_418_IM_A_TEAPOT
 
 from backend.constants import DEBUG, FRONTEND_DOMAIN
 from backend.schemas.auth import NewUser, User
 from backend.utils import auth
+from backend.utils.hosts import verify_host
 
 router = APIRouter(prefix="/auth")
 
@@ -12,11 +14,15 @@ async def login(request: Request, response: Response, user: User) -> Response:
     """Login the given user."""
     token = await auth.login(request.app.state.db_session, user)
 
+    domain = request.headers.get("x-forwarded-for", FRONTEND_DOMAIN)
+    if not verify_host(domain):
+        raise HTTPException(status_code=HTTP_418_IM_A_TEAPOT, detail="Nice try.")
+
     response.set_cookie(
         key="token",
         value=token,
         httponly=True,
-        domain=FRONTEND_DOMAIN,
+        domain=domain,
         samesite="strict",
         secure=not DEBUG,
     )

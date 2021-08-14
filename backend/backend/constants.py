@@ -17,17 +17,24 @@ FRONTEND_DOMAIN = config(
 )
 
 if DEBUG:
-    ALLOW_ORIGINS = [
-        "http://127.0.0.1:3000",
-        "http://localhost:3000",
-        "http://portfolio-creator.local:3000",
+    ALLOW_ORIGIN_PROTOCOL = "http"
+    ALLOW_ORIGIN_PARTS = [
+        ("127.0.0.1", 3000),
+        ("localhost", 3000),
+        ("portfolio-creator.local", 3000),
     ]
     ALLOW_ORIGIN_REGEX = None
 
 else:
-    ALLOW_ORIGINS = [
-        "https://portfolio-creator.dens.dev",
-        "https://portfolio-creator.vercel.app",
-        "https://portfolio-creator-haverford-cc.vercel.app",
+    ALLOW_ORIGIN_PROTOCOL = "https"
+    ALLOW_ORIGIN_PARTS = [
+        ("portfolio-creator.dens.dev", None),
+        ("portfolio-creator.vercel.app", None),
+        ("portfolio-creator-haverford-cc.vercel.app", None),
     ]
-    ALLOW_ORIGIN_REGEX = r"https://portfolio-creator-git-.*-haverford-cc\.vercel\.app"
+    ALLOW_ORIGIN_REGEX = r"portfolio-creator-git-.*-haverford-cc\.vercel\.app"
+
+ALLOW_ORIGINS = [
+    f"{ALLOW_ORIGIN_PROTOCOL}://{host}{port}" if port is not None else f"{ALLOW_ORIGIN_PROTOCOL}://{host}"
+    for host, port in ALLOW_ORIGIN_PARTS
+]
