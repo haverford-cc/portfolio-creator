@@ -3,16 +3,18 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Navbar from '../components/Navbar/Narbar';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const Login = () => {
+
+    const router = useRouter();
 
     const ApiClient = axios.create({
         baseURL: "/api",
         withCredentials: true,
-        headers: { "X-Forwarded-Host": window.location.hostname },
+        headers: { "X-Forwarded-Host": router.query.index },
     });
-    
+
     const initialValues = {
         email: '',
         password: ''
