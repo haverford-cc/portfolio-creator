@@ -9,12 +9,6 @@ const Login = () => {
 
     const router = useRouter();
 
-    const ApiClient = axios.create({
-        baseURL: "/api",
-        withCredentials: true,
-        headers: { "X-Forwarded-Host": router.basePath },
-    });
-
     const initialValues = {
         email: '',
         password: ''
@@ -31,15 +25,15 @@ const Login = () => {
     }
 
     const formSubmission = (values:response) => {
-        ApiClient.post('/auth/login', {
-            email: values.email,
-            password: values.password
+        // ApiClient.post('/auth/login', {
+        //     email: values.email,
+        //     password: values.password
 
-        }).then(response => {
-            if(response.data.success) {
-                router.push('/');
-            }
-        })
+        // }).then(response => {
+        //     if(response.data.success) {
+        //         router.push('/');
+        //     }
+        // })
     }
 
     return(
