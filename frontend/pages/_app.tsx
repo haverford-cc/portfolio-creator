@@ -1,9 +1,22 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { useContext } from "react";
+import { createContext } from "react";
+import * as axios from 'axios';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+  const ApiClient = axios.create({
+    baseURL: "/api",
+    withCredentials: true,
+    // headers: { "X-Forwarded-Host":  },
+  });
+
+  const ApiContext = createContext(ApiClient);
+
+  return (
+    <ApiContext.Provider value={ ApiContext }>
+      <Component {...pageProps} />
+    </ApiContext.Provider> 
+  )
 };
 
 export default MyApp;
