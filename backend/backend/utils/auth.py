@@ -57,7 +57,7 @@ async def signup(db_session: AsyncSession, user: UserSchema) -> int:
                     user.password1,
                 )
 
-            db_user = User(email=user.email, password_hash=password_hash)
+            db_user = User(email=user.email, password_hash=password_hash, name=user.name)
             session.add(db_user)
             await session.flush()
 
