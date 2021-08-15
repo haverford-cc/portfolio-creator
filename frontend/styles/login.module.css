@@ -6,7 +6,7 @@
     background-color: #f2f2f2;
 }
 
-.login_form {
+.login-form {
     width: 500px;
     height: auto;
     margin: 5% auto;
@@ -19,6 +19,8 @@
 
 .title {
     font-size: 1.3rem;
+    padding: 0;
+    margin: 0;
 }
 
 .login {
@@ -57,5 +59,16 @@
   }
 
   .span {
+      font-weight: bold;
       color: red;
+      font-size: .8rem;
+  }
+
+  .error-handlling {
+    color: red;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
   }
