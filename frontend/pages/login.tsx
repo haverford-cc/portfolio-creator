@@ -12,27 +12,32 @@ const Login = () => {
     const ApiClient = axios.create({
         baseURL: "/api",
         withCredentials: true,
-        headers: { "X-Forwarded-Host": router.query.index },
+        headers: { "X-Forwarded-Host": router.basePath },
     });
 
     const initialValues = {
         email: '',
         password: ''
-    }
+    }   
 
     const formSchema = Yup.object().shape({
-        email: Yup.string().required(' Required'),
-        password: Yup.string().required(' Required')
+        email: Yup.string().email().required(' Required'),
+        password: Yup.string().min(8).required(' Required')
     })
 
-    const formSubmission = (values:any) => {
+    type response = {
+        email: string,
+        password: string
+    }
+
+    const formSubmission = (values:response) => {
         ApiClient.post('/auth/login', {
             email: values.email,
             password: values.password
 
         }).then(response => {
             if(response.data.success) {
-                window.location.href = '/';
+                router.push('/');
             }
         })
     }
@@ -40,22 +45,22 @@ const Login = () => {
     return(
             <div className={styles.background}>
                 <Navbar />
-                <Formik initialValues={initialValues} onSubmit={formSubmission} validationSchema={formSchema} className={styles.login_form}>
-                    <Form className={styles.login_form}>
-                        <div className={styles.greeting}>
-                            <h1 className={styles.title}>Welcome back to <span>Portfolio Creator</span></h1>
-                            <p className={styles.description}>Login to access your saved websites!</p>
-                        </div>
-                        <div className={styles.login_inputs}>
-                            <label>Username</label>
-                            <ErrorMessage name="email">{msg => <span className={styles.span}>{msg}</span>}</ErrorMessage>
+                <Formik initialValues={initialValues} onSubmit={formSubmission} validationSchema={formSchema}>
+                    <Form className={styles["login-form"]}>
+                        <h1 className={styles.title}>Welcome back to <span>Portfolio Creator</span></h1>
+                        <p>Login to access your saved websites!</p>
+                        <div>
+                            <label>Email </label>
+                            <ErrorMessage name="email">{msg => <span><span>&#8212;</span><span className={styles.span}>{` ${msg}`}</span></span>}</ErrorMessage>
                             <Field className={styles.input} type="text" name="email" placeholder="Email" />
-                            <label>Password</label>
-                            <ErrorMessage name="password">{msg => <span className={styles.span}>{msg}</span>}</ErrorMessage>
+                            <label>Password </label>
+                            <ErrorMessage name="password">{msg => <span><span>&#8212;</span><span className={styles.span}>{` ${msg}`}</span></span>}</ErrorMessage>
                             <Field className={styles.input} type="password" name="password" placeholder="Password" />
+                            <h3 className={styles["error-handlling"]}></h3>
                         </div>
-                        <button className={styles.login}>Login</button>
+                        <button className={styles.login} type="submit">Login</button>
                     </Form>
+
                 </Formik>
             </div>
     )
