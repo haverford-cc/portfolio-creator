@@ -4,7 +4,7 @@ import { createContext } from "react";
 import * as axios from 'axios';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const ApiClient = axios.create({
+  const { ApiClient } = (axios as any).create({
     baseURL: "/api",
     withCredentials: true,
     // headers: { "X-Forwarded-Host":  },
