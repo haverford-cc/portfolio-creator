@@ -25,15 +25,7 @@ const Login = () => {
     }
 
     const formSubmission = (values:response) => {
-        // ApiClient.post('/auth/login', {
-        //     email: values.email,
-        //     password: values.password
 
-        // }).then(response => {
-        //     if(response.data.success) {
-        //         router.push('/');
-        //     }
-        // })
     }
 
     return(
