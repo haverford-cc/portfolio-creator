@@ -11,7 +11,7 @@ class NewUser(BaseModel):
     password2: str
 
     @validator("password1")
-    def password_length(cls, p1) -> str:
+    def password_length(cls, p1: str) -> str:
         """Ensure password is at least 8 characters long."""
         if len(p1) < PASSWORD_MIN_LENGTH:
             raise ValueError("Password is too short")
@@ -19,7 +19,7 @@ class NewUser(BaseModel):
         return p1
 
     @validator("password2")
-    def passwords_match(cls, p2, values):
+    def passwords_match(cls, p2: str, values: dict[str, str]):
         """Ensure both passwords match."""
         if "password1" in values and values["password1"] != p2:
             raise ValueError("Passwords do not match")
