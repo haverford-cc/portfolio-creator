@@ -1,12 +1,14 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import axios from 'axios';
+
+import { ApiClientProvider } from "../hooks/api";
+import "../styles/globals.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-
   return (
-    <Component {...pageProps} />
-  )
+    <ApiClientProvider>
+      <Component {...pageProps} />
+    </ApiClientProvider>
+  );
 };
 
 export default MyApp;
