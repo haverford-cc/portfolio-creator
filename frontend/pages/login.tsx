@@ -2,12 +2,8 @@ import styles from '../styles/login.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Navbar from '../components/Navbar/Narbar';
-import axios from 'axios';
-import { useRouter } from 'next/router';
 
 const Login = () => {
-
-    const router = useRouter();
 
     const initialValues = {
         email: '',
@@ -25,7 +21,6 @@ const Login = () => {
     }
 
     const formSubmission = (values:response) => {
-
     }
 
     return(
