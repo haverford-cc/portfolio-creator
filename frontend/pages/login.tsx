@@ -40,6 +40,7 @@ const Login = (props: LoginProps) => {
         password: values.password,
       })
       .then((response) => {
+        console.log(response.data);
         if (response.data.success) {
           router.push("/");
         }
