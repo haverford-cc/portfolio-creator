@@ -36,15 +36,13 @@ const Login = (props: LoginProps) => {
   const formSubmission = (values: LoginFormValues) => {
     apiClient
       .post("/auth/login", {
-        email: values.email,
+       email: values.email,
         password: values.password,
       })
-      .then((response) => {
-        console.log(response.data);
-        if (response.data.success) {
-          router.push("/");
-        }
-      });
+      .then(response => {
+        if(response.data.success) router.push("/");
+      })
+      .catch(error => console.log(error.response.data.detail))
   };
 
   return (
@@ -90,6 +88,7 @@ const Login = (props: LoginProps) => {
               placeholder="Password"
             />
           </div>
+          <h3 className={styles["error-handling"]}></h3>
           <button className={styles.login}>Login</button>
         </Form>
       </Formik>
