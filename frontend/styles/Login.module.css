@@ -55,7 +55,8 @@
 
 .error-handling {
   color: red;
-  font-size: 0.9rem;
+  font-weight: bold;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   margin: 0;

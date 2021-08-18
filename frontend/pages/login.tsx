@@ -1,6 +1,8 @@
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 
+import { useState } from "react";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -23,6 +25,9 @@ const Login = (props: LoginProps) => {
   const { apiClient, setHost } = useApiClient();
   setHost(props.host);
 
+  //error handling
+  const [loginError, setLoginError] = useState('');
+
   const initialValues = {
     email: "",
     password: "",
@@ -42,7 +47,7 @@ const Login = (props: LoginProps) => {
       .then(response => {
         if(response.data.success) router.push("/");
       })
-      .catch(error => console.log(error.response.data.detail))
+      .catch(error => setLoginError(error.response.data.detail))
   };
 
   return (
@@ -88,7 +93,7 @@ const Login = (props: LoginProps) => {
               placeholder="Password"
             />
           </div>
-          <h3 className={styles["error-handling"]}></h3>
+          <h3 className={styles["error-handling"]}>{loginError}</h3>
           <button className={styles.login}>Login</button>
         </Form>
       </Formik>
