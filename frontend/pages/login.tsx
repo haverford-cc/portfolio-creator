@@ -26,7 +26,7 @@ const Login = (props: LoginProps) => {
   setHost(props.host);
 
   //error handling
-  const [loginError, setLoginError] = useState('');
+  const [loginError, setLoginError] = useState("");
 
   const initialValues = {
     email: "",
@@ -41,13 +41,13 @@ const Login = (props: LoginProps) => {
   const formSubmission = (values: LoginFormValues) => {
     apiClient
       .post("/auth/login", {
-       email: values.email,
+        email: values.email,
         password: values.password,
       })
-      .then(response => {
-        if(response.data.success) router.push("/");
+      .then((response) => {
+        if (response.data.success) router.push("/");
       })
-      .catch(error => setLoginError(error.response.data.detail))
+      .catch((error) => setLoginError(error.response.data.detail));
   };
 
   return (
