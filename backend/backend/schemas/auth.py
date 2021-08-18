@@ -31,3 +31,4 @@ class User(BaseModel):
     """Represents a user."""
     email: EmailStr
     password: str
+    name: str
