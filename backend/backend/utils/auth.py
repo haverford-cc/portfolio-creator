@@ -85,7 +85,7 @@ async def login(db_session: AsyncSession, user: UserSchema) -> str:
                 pool,
                 bcrypt.verify,
                 user.password,
-                db_user.password_xhash
+                db_user.password_hash
             ):
                 epoch_time = int(time.time())
                 payload = {
