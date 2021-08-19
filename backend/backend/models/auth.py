@@ -11,4 +11,4 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     email = Column(String(length=255), unique=True, nullable=False)
     password_hash = Column(String, nullable=False)
-    name = Column(String(length=100), nullable=False)
+    name = Column(String, nullable=False)
