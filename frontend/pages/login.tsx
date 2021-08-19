@@ -94,7 +94,7 @@ const Login = (props: LoginProps) => {
             />
           </div>
           <h3 className={styles["error-handling"]}>{loginError}</h3>
-          <button className={styles.login}>Login</button>
+          <button className={styles.login} type="submit">Login</button>
         </Form>
       </Formik>
     </div>
