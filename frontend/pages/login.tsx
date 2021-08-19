@@ -26,7 +26,7 @@ const Login = (props: LoginProps) => {
   setHost(props.host);
 
   //error handling
-  const [loginError, setLoginError] = useState("");
+  const [loginError, setLoginError] = useState<string>();
 
   const initialValues = {
     email: "",
