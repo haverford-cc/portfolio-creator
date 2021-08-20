@@ -1,7 +1,7 @@
 .login-form {
   width: 500px;
   height: auto;
-  margin: 5% auto;
+  margin: 32px auto;
   display: flex;
   flex-direction: column;
   background-color: white;
