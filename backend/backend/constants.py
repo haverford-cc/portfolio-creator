@@ -19,7 +19,7 @@ FRONTEND_HOST = config(
 PASSWORD_MIN_LENGTH = 8
 
 if DEBUG:
-    ALLOW_ORIGIN_PROTOCOL = "https"
+    ALLOW_ORIGIN_PROTOCOL = "http"
     ALLOW_ORIGIN_HOSTS = [
         "127.0.0.1:3000",
         "localhost:3000",
