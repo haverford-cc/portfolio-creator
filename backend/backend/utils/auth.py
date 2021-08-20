@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.constants import JWT_SECRET
 from backend.models.auth import User
-from backend.schemas.auth import User as UserSchema
+from backend.schemas.auth import NewUser as NewUserSchema, User as UserSchema
 
 
 class JWTBearer(APIKeyCookie):
@@ -39,7 +39,7 @@ class JWTBearer(APIKeyCookie):
         return token
 
 
-async def signup(db_session: AsyncSession, user: UserSchema) -> int:
+async def signup(db_session: AsyncSession, user: NewUserSchema) -> int:
     """Create an account for a new user."""
     async with db_session() as session:
         async with session.begin():
