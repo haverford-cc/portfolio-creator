@@ -47,7 +47,7 @@ const Login = (props: LoginProps) => {
       .then((response) => {
         if (response.data.success) router.push("/");
       })
-      .catch((error) => console.log(error.response));
+      .catch((error) => setLoginError(error.response.data.detail));
   };
 
   return (
