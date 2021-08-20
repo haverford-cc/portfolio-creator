@@ -47,11 +47,11 @@ const Login = (props: LoginProps) => {
       .then((response) => {
         if (response.data.success) router.push("/");
       })
-      .catch((error) => setLoginError(error.response.data.detail));
+      .catch((error) => console.log(error.response));
   };
 
   return (
-    <div className={styles.background}>
+    <div className="background">
       <Navbar />
       <Formik
         initialValues={initialValues}
@@ -60,7 +60,11 @@ const Login = (props: LoginProps) => {
       >
         <Form className={styles["login-form"]}>
           <h1 className={styles.title}>Welcome back to Portfolio Creator</h1>
-          <p>Login to access your saved websites!</p>
+          <p className={styles.description}>
+            {
+              loginError ? <span className={styles["error-handling"]}>{loginError}</span> :  "Login to access your saved websites!"
+            }
+          </p>
           <div>
             <label>Email</label>
             <ErrorMessage name="email">
@@ -71,12 +75,14 @@ const Login = (props: LoginProps) => {
                 </>
               )}
             </ErrorMessage>
-            <Field
-              className={styles.input}
-              type="email"
-              name="email"
-              placeholder="Email"
-            />
+          </div>
+          <Field
+            className={styles.input}
+            type="email"
+            name="email"
+            placeholder="Email"
+          />
+          <div>
             <label>Password</label>
             <ErrorMessage name="password">
               {(msg) => (
@@ -86,14 +92,13 @@ const Login = (props: LoginProps) => {
                 </>
               )}
             </ErrorMessage>
-            <Field
-              className={styles.input}
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
           </div>
-          <h3 className={styles["error-handling"]}>{loginError}</h3>
+          <Field
+            className={styles.input}
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
           <button className={styles.login} type="submit">Login</button>
         </Form>
       </Formik>
