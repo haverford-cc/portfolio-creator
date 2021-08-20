@@ -61,9 +61,11 @@ const Login = (props: LoginProps) => {
         <Form className={styles["login-form"]}>
           <h1 className={styles.title}>Welcome back to Portfolio Creator</h1>
           <p className={styles.description}>
-            {
-              loginError ? <span className={styles["error-handling"]}>{loginError}</span> :  "Login to access your saved websites!"
-            }
+            {loginError ? (
+              <span className={styles["error-handling"]}>{loginError}</span>
+            ) : (
+              "Login to access your saved websites!"
+            )}
           </p>
           <div>
             <label>Email</label>
@@ -99,7 +101,9 @@ const Login = (props: LoginProps) => {
             name="password"
             placeholder="Password"
           />
-          <button className={styles.login} type="submit">Login</button>
+          <button className={styles.login} type="submit">
+            Login
+          </button>
         </Form>
       </Formik>
     </div>
