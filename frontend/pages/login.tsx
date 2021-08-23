@@ -51,59 +51,59 @@ const Login = (props: LoginProps) => {
   };
 
   return (
-      <Formik
-        initialValues={initialValues}
-        onSubmit={formSubmission}
-        validationSchema={formSchema}
-      >
-        <Form className={styles["login-form"]}>
-          <h1 className={styles.title}>Welcome back to Portfolio Creator</h1>
-          <p className={styles.description}>
-            {loginError ? (
-              <span className={styles["error-handling"]}>{loginError}</span>
-            ) : (
-              "Login to access your saved websites!"
+    <Formik
+      initialValues={initialValues}
+      onSubmit={formSubmission}
+      validationSchema={formSchema}
+    >
+      <Form className={styles["login-form"]}>
+        <h1 className={styles.title}>Welcome back to Portfolio Creator</h1>
+        <p className={styles.description}>
+          {loginError ? (
+            <span className={styles["error-handling"]}>{loginError}</span>
+          ) : (
+            "Login to access your saved websites!"
+          )}
+        </p>
+        <div>
+          <label>Email</label>
+          <ErrorMessage name="email">
+            {(msg) => (
+              <>
+                {" — "}
+                <span className={styles.span}>{msg}</span>
+              </>
             )}
-          </p>
-          <div>
-            <label>Email</label>
-            <ErrorMessage name="email">
-              {(msg) => (
-                <>
-                  {" — "}
-                  <span className={styles.span}>{msg}</span>
-                </>
-              )}
-            </ErrorMessage>
-          </div>
-          <Field
-            className={styles.input}
-            type="email"
-            name="email"
-            placeholder="Email"
-          />
-          <div>
-            <label>Password</label>
-            <ErrorMessage name="password">
-              {(msg) => (
-                <>
-                  {" — "}
-                  <span className={styles.span}>{msg}</span>
-                </>
-              )}
-            </ErrorMessage>
-          </div>
-          <Field
-            className={styles.input}
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
-          <button className={styles.login} type="submit">
-            Login
-          </button>
-        </Form>
-      </Formik>
+          </ErrorMessage>
+        </div>
+        <Field
+          className={styles.input}
+          type="email"
+          name="email"
+          placeholder="Email"
+        />
+        <div>
+          <label>Password</label>
+          <ErrorMessage name="password">
+            {(msg) => (
+              <>
+                {" — "}
+                <span className={styles.span}>{msg}</span>
+              </>
+            )}
+          </ErrorMessage>
+        </div>
+        <Field
+          className={styles.input}
+          type="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button className={styles.login} type="submit">
+          Login
+        </button>
+      </Form>
+    </Formik>
   );
 };
 
