@@ -51,8 +51,6 @@ const Login = (props: LoginProps) => {
   };
 
   return (
-    <div className="background">
-      <Navbar />
       <Formik
         initialValues={initialValues}
         onSubmit={formSubmission}
@@ -106,7 +104,6 @@ const Login = (props: LoginProps) => {
           </button>
         </Form>
       </Formik>
-    </div>
   );
 };
 
