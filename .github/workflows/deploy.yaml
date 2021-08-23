@@ -33,11 +33,20 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-      - name: Deploy to Kubernetes
+      - name: Deploy backend to Kubernetes
         uses: Azure/k8s-deploy@v1
         with:
           namespace: portfolio-creator
           manifests: |
             portfolio-creator/backend/deployment.yaml
           images: 'ghcr.io/haverford-cc/portfolio-creator-backend:${{ steps.sha_tag.outputs.tag }}'
+          kubectl-version: 'latest'
+
+      - name: Deploy frontend to Kubernetes
+        uses: Azure/k8s-deploy@v1
+        with:
+          namespace: portfolio-creator
+          manifests: |
+            portfolio-creator/frontend/deployment.yaml
+          images: 'ghcr.io/haverford-cc/portfolio-creator-frontend:${{ steps.sha_tag.outputs.tag }}'
           kubectl-version: 'latest'
