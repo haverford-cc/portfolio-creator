@@ -10,6 +10,8 @@ class NewUser(BaseModel):
     password1: str
     password2: str
 
+    name: str
+
     @validator("password1")
     def password_length(cls, p1: str) -> str:
         """Ensure password is at least 8 characters long."""

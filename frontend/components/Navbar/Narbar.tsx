@@ -16,9 +16,9 @@ const Navbar = () => (
       </li>
     </ul>
     <div>
-      <a href="" className={styles.signin}>
-        Sign in
-      </a>
+      <Link href="/login">
+        <a className={styles.signin}>Sign in</a>
+      </Link>
       <button className={styles.signup}>Sign Up</button>
     </div>
   </div>

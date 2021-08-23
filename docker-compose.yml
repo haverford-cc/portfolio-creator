@@ -10,6 +10,8 @@ services:
       DEBUG: "true"
       DATABASE_URL: postgresql://portfolio-creator:portfolio-creator@postgres:5432/portfolio-creator
       JWT_SECRET: only-for-development-use
+    env_file: 
+      - .env
     ports:
       - 8000:8000
     volumes:
