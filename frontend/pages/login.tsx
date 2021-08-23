@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import Navbar from "../components/Navbar/Narbar";
 import { useApiClient } from "../hooks/api";
 import styles from "../styles/Login.module.css";
 
