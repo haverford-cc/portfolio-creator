@@ -43,3 +43,12 @@ jobs:
         tags: |
           ghcr.io/haverford-cc/portfolio-creator-backend:latest
           ghcr.io/haverford-cc/portfolio-creator-backend:${{ steps.sha_tag.outputs.tag }}
+
+    - name: Build and Push Frontend Docker Image
+      uses: docker/build-push-action@v2
+      with:
+        context: ./frontend
+        push: true
+        tags: |
+          ghcr.io/haverford-cc/portfolio-creator-frontend:latest
+          ghcr.io/haverford-cc/portfolio-creator-frontend:${{ steps.sha_tag.outputs.tag }}
